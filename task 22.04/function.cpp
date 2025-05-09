@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <fstream>
 #include <Windows.h>
 
 using namespace std;
@@ -56,12 +57,18 @@ void MREOQueue::callNext() {
         inputThread.detach();
     }
 
+    ofstream file;
     if (responded) {
         cout << current.getName() << " зареєстровано. номер " << current.getTicket() << " обслуговано\n\n";
+        file.open("served.txt", ios::app);
+        file << "Обслуговано: " << current.getTicket() << " - " << current.getName() << "\n";
     }
     else {
         cout << current.getName() << " не відповів. переходимо до наступного\n\n";
+        file.open("missed.txt", ios::app);
+        file << "Не з'явився: " << current.getTicket() << " - " << current.getName() << "\n";
     }
+    file.close();
 
     queue.pop();
 }

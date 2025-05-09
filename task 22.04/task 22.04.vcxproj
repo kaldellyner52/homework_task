@@ -133,6 +133,10 @@
   <ItemGroup>
     <ClInclude Include="function.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="missed.txt" />
+    <Text Include="served.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
